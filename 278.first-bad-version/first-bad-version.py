@@ -4,20 +4,17 @@
 # def isBadVersion(version):
 
 class Solution(object):
-    def firstBadVersion(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        l, r = 1, n
-        while l < r:
-            m = l + (r - l) / 2
-            if isBadVersion(m):
-                r = m - 1
-            else:
-                l = m + 1
-        
-        if not isBadVersion(r):
-            return r + 1
-        return r
-                
+  def firstBadVersion(self, n):
+    """
+    :type n: int
+    :rtype: int
+    """
+    lo = 1
+    hi = n
+    while lo < hi:
+      mid = lo + (hi - lo) / 2
+      if isBadVersion(mid):
+        hi = mid
+      else:
+        lo = mid + 1
+    return lo
